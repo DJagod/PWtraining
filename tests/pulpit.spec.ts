@@ -26,12 +26,12 @@ test.describe('Pulpit tests', () => {
     await page.getByTestId('close-button').click();
 
     //Assert
-    await expect(page.locator('#show_messages')).toHaveText(`Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`);
+    await expect(page.locator('#show_messages')).toHaveText(
+      `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`,
+    );
   });
 
-
   test('Succesfull mobile top-up', async ({ page }) => {
-
     await page.goto('https://demo-bank.vercel.app/');
     await page.getByTestId('login-input').fill('testerDJ');
     await page.getByTestId('password-input').fill('haslo123');
@@ -43,7 +43,8 @@ test.describe('Pulpit tests', () => {
     await page.getByRole('button', { name: 'doładuj telefon' }).click();
 
     await page.getByTestId('close-button').click();
-    await expect(page.locator('#show_messages')).toHaveText('Doładowanie wykonane! 30,00PLN na numer 504 xxx xxx');
-
+    await expect(page.locator('#show_messages')).toHaveText(
+      'Doładowanie wykonane! 30,00PLN na numer 504 xxx xxx',
+    );
   });
 });
