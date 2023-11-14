@@ -23,11 +23,11 @@ test.describe('User login to Demobank', () => {
 
   test('unsuccesful login with too short username', async ({ page }) => {
     // Arrange
-    const incorrectLogin = 'tester';
+    const incorrectUserId = 'tester';
     const expectedMessage = 'identyfikator ma min. 8 znaków';
 
     // Act
-    await page.getByTestId('login-input').fill(incorrectLogin);
+    await page.getByTestId('login-input').fill(incorrectUserId);
     await page.getByTestId('password-input').click();
 
     // Assert
@@ -38,12 +38,12 @@ test.describe('User login to Demobank', () => {
 
   test('unsuccesful login with too short password', async ({ page }) => {
     // Arrange
-    const correctLogin = 'testerDJ';
+    const userId = 'testerDJ';
     const incorrectPassword = 'haslo';
     const expectedMessage = 'hasło ma min. 8 znaków';
 
     // Act
-    await page.getByTestId('login-input').fill(correctLogin);
+    await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(incorrectPassword);
     await page.getByTestId('password-input').blur();
 
